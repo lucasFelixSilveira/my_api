@@ -10,7 +10,7 @@ function Home(req, res) {
     })
     .then(res => res.json())
     .then(res_ => {
-        res.send(200).json(res_)
+        res.status(200).json(res_)
     })
 }
 
