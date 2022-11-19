@@ -4,4 +4,4 @@ Esta api funciona na seguinte forma
 - Logo após, é checado a versão, se tiver atualização, é recomendado atualizar.
 
 # FIreray
-- [Arquivo de uso da API](https://google.com)
+- [Arquivo de uso da API](https://github.com/lucasFelixSilveira/FIreray/blob/main/FIreray/lib/events/ready.js)
