@@ -6,27 +6,21 @@
     arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
     if( index >= ( vars.length - 1 ) ) continueProcess();
   })
-  function continueProcess() {
-    class Props {
-      constructor() {
-        this.href = '';
-        this.sucess = '';
-      }
-      set setRef(x) {
-        this.href = x;  
-      }
-      set verify(x) {
-        this.sucess = x
-        this.process();
-      }
-      static process() {
-        if( this.sucess == '' || this.href == '' ) return;
-        const var_ = sessionStorage.getItem(this.sucess)
-        if( var_ ) location.href = `${this.href}/dashboard`
-        else location.href = `${this.href}/login`
-      }
+  function continueProcess() 
+    const props = new Object();
+    props.process = function () {
+      if( sucess == '' || href == '' ) return;
+      const var_ = sessionStorage.getItem(sucess)
+      if( var_ ) location.href = `${href}/${sucess}`
+      else location.href = `${href}/login`
     }
-    const props = new Props();
+    props.verify = function (x) {
+      sucess = x
+      props.process();
+    }
+    props.setRef = function (x) {
+        href = x;  
+    }
     arrayQuery.forEach((item, index) => {
       if( item.value === 'href' ) props.setRef(item.content); 
       else if( item.value === 'sucess' ) props.verify(item.content);
