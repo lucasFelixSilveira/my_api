@@ -3,7 +3,7 @@
     const query = location.href.split('?').pop();
     const vars = query.split('&');
     const arrayQuery = [];
-    let sucess, href = '';
+    let sucess, href, Var = '';
     vars.forEach((item, index) => {
       arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
       if( index >= ( vars.length - 1 ) ) continueProcess();
@@ -11,8 +11,8 @@
     function continueProcess() {
       const props = new Object();
       props.process = function () {
-        if( sucess == '' || href == '' ) return;
-        const var_ = sessionStorage.getItem(sucess) 
+        if( sucess == '' || href == '' || Var == '' ) return;
+        const var_ = sessionStorage.getItem(Var) 
         if( var_ ) location.href = `https://${href}/${sucess}`
         else location.href = `https://${href}/login`
       }
@@ -23,8 +23,12 @@
       props.setRef = function (x) {
           href = x;  
       }
+      props.setRef = function (x) {
+          Var = x;  
+      }
       arrayQuery.forEach((item, index) => {
         if( item.value === 'href' ) props.setRef(item.content); 
+        else if( item.value === 'var' ) props.setVar(item.content);
         else if( item.value === 'sucess' ) props.verify(item.content);
         else if( index >= ( arrayQuery.length - 1 ) ) {
           setTimeout(() => {  
