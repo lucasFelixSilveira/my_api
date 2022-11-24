@@ -13,8 +13,8 @@
       props.process = function () {
         if( sucess == '' || href == '' || Var == '' ) return;
         const var_ = sessionStorage.getItem(Var) 
-        if( var_ ) location.href = `https://${href}/${sucess}`
-        else location.href = `https://${href}/login`
+        if( var_ ) location.href = `${href.includes('localhost')? 'http':'https'}://${href}/${sucess}`
+        else location.href = `${href.includes('localhost')? 'http':'https'}://${href}/login`
       }
       props.verify = function (x) {
         sucess = x
