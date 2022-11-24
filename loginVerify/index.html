@@ -12,8 +12,8 @@
     props.process = function () {
       if( sucess == '' || href == '' ) return;
       const var_ = sessionStorage.getItem(sucess)
-      if( var_ ) location.href = `${href}/${sucess}`
-      else location.href = `${href}/login`
+      if( var_ ) location.href = `https://${href}/${sucess}`
+      else location.href = `https://${href}/login`
     }
     props.verify = function (x) {
       sucess = x
