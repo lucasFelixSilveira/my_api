@@ -2,6 +2,7 @@
   const query = location.href.split('?').pop();
   const vars = query.split('&');
   const arrayQuery = [];
+  let sucess, href = '';
   vars.forEach((item, index) => {
     arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
     if( index >= ( vars.length - 1 ) ) continueProcess();
