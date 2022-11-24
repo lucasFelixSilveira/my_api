@@ -6,7 +6,7 @@
     arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
     if( index >= ( vars.length - 1 ) ) continueProcess();
   })
-  function continueProcess() 
+  function continueProcess() {
     const props = new Object();
     props.process = function () {
       if( sucess == '' || href == '' ) return;
