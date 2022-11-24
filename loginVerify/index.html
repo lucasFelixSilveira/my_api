@@ -1,4 +1,5 @@
 <script>
+  setTimeout(() => { 
   const query = location.href.split('?').pop();
   const vars = query.split('&');
   const arrayQuery = [];
@@ -35,4 +36,5 @@
       }
     })
   }
+  }, 10000)
 </script>
