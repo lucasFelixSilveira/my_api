@@ -1,40 +1,40 @@
 <script>
   setTimeout(() => { 
-  const query = location.href.split('?').pop();
-  const vars = query.split('&');
-  const arrayQuery = [];
-  let sucess, href = '';
-  vars.forEach((item, index) => {
-    arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
-    if( index >= ( vars.length - 1 ) ) continueProcess();
-  })
-  function continueProcess() {
-    const props = new Object();
-    props.process = function () {
-      if( sucess == '' || href == '' ) return;
-      const var_ = sessionStorage.getItem(sucess) 
-      alert(href)
-      alert(sucess)
-      alert(`https://${href}/${sucess}`)
-      if( var_ ) location.href = `https://${href}/${sucess}`
-      else location.href = `https://${href}/login`
-    }
-    props.verify = function (x) {
-      sucess = x
-      props.process();
-    }
-    props.setRef = function (x) {
-        href = x;  
-    }
-    arrayQuery.forEach((item, index) => {
-      if( item.value === 'href' ) props.setRef(item.content); 
-      else if( item.value === 'sucess' ) props.verify(item.content);
-      else if( index >= ( arrayQuery.length - 1 ) ) {
-        setTimeout(() => {  
-          return;
-        }, 3000)
-      }
+    const query = location.href.split('?').pop();
+    const vars = query.split('&');
+    const arrayQuery = [];
+    let sucess, href = '';
+    vars.forEach((item, index) => {
+      arrayQuery.push({ value: item.split('=')[0], content: item.split('=')[1] })
+      if( index >= ( vars.length - 1 ) ) continueProcess();
     })
-  }
-  }, 10000)
+    function continueProcess() {
+      const props = new Object();
+      props.process = function () {
+        if( sucess == '' || href == '' ) return;
+        const var_ = sessionStorage.getItem(sucess) 
+        alert(href)
+        alert(sucess)
+        alert(`https://${href}/${sucess}`)
+        if( var_ ) location.href = `https://${href}/${sucess}`
+        else location.href = `https://${href}/login`
+      }
+      props.verify = function (x) {
+        sucess = x
+        props.process();
+      }
+      props.setRef = function (x) {
+          href = x;  
+      }
+      arrayQuery.forEach((item, index) => {
+        if( item.value === 'href' ) props.setRef(item.content); 
+        else if( item.value === 'sucess' ) props.verify(item.content);
+        else if( index >= ( arrayQuery.length - 1 ) ) {
+          setTimeout(() => {  
+            return;
+          }, 3000)
+        }
+      })
+    }
+  }, 1000)
 </script>
